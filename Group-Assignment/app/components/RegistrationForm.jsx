@@ -5,10 +5,8 @@ const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
-        phoneNumber: '',
-        userName: '',
-        email: '',
-        password: ''
+        dateOfBirth: '',
+        currentGrade: ''
     })
     const [message, setMessage] = useState('')
 
@@ -23,22 +21,21 @@ const RegistrationForm = () => {
                 body: JSON.stringify(formData)
             })
             if (response.ok) {
-                setMessage('User has been registered successfully')
+                setMessage('Student has been registered successfully')
                 setFormData({
                     firstName: '',
                     lastName: '',
-                    phoneNumber: '',
-                    userName: '',
-                    email: '',
-                    password: ''
+                    dateOfBirth: '',
+                    currentGrade: ''
                 })
             }
             else {
-                setMessage('User registration failed')
+                setMessage('Student registration failed')
             }
 
         } catch (error) {
-            throw new Error("User registration failed")
+            console.error ('There was an error registering the student: ', error);
+            setMessage("Student registration failed: " + error.message);
         }
     }
 
@@ -52,7 +49,7 @@ const RegistrationForm = () => {
 
     return (
         <div className='max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow'>
-            <h2 className='text 2xl mb-4'>Registration Form</h2>
+            <h2 className='text 2xl mb-4'>Student Registration Form</h2>
             <form onSubmit={handleSubmit}>
                 <div className='mb-4'>
                     <label htmlFor="firstName" className='block text-sm font-medium text-gray-600'>First Name</label>
@@ -82,60 +79,34 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className='mb-4'>
-                    <label htmlFor="phoneNumber" className='block text-sm font-medium text-gray-600'>Phone Number</label>
+                    <label htmlFor="dateOfBirth" className='block text-sm font-medium text-gray-600'>Date of Birth</label>
                     {/* add handle submit */}
                     <input
-                        type="text"
-                        id="phoneNumber"
-                        name="phoneNumber"
+                        type="date"
+                        id="dateOfBirth"
+                        name="dateOfBirth"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md' required
-                        value={formData.phoneNumber}
+                        value={formData.dateOfBirth}
                         onChange={handleInputChange}
                     />
                 </div>
 
                 <div className='mb-4'>
-                    <label htmlFor="userName" className='block text-sm font-medium text-gray-600'>User Name</label>
+                    <label htmlFor="currentGrade" className='block text-sm font-medium text-gray-600'>Current Grade</label>
                     {/* add handle submit */}
                     <input
-                        type="text"
-                        id="userName"
-                        name="userName"
+                        type="number"
+                        id="currentGrade"
+                        name="currentGrade"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md' required
-                        value={formData.userName}
-                        onChange={handleInputChange}
-                    />
-                </div>
-
-                <div className='mb-4'>
-                    <label htmlFor="email" className='block text-sm font-medium text-gray-600'>Email</label>
-                    {/* add handle submit */}
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className='mt-1 p-2 w-full border border-gray-300 rounded-md' required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
-                </div>
-
-                <div className='mb-4'>
-                    <label htmlFor="password" className='block text-sm font-medium text-gray-600'>Password</label>
-                    {/* add handle submit */}
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        className='mt-1 p-2 w-full border border-gray-300 rounded-md' required
-                        value={formData.password}
+                        value={formData.currentGrade}
                         onChange={handleInputChange}
                     />
                 </div>
 
                 <div className='mb-4'>
                     <button type='submit' className='bg-blue-500 text-white p-2 rounded-md w-full hover:bg-blue-600'>
-                        Register
+                        Register Student
                     </button>
                 </div>
             </form>

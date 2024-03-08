@@ -1,56 +1,39 @@
 'use client'
-import React from 'react'
-import { useState } from 'react'
-
-const tasks = [
-    'Task 1',
-    'Task 2',
-    'Task 3'
-];
+import React, { useState, useEffect } from 'react'
 
 const StudentList = () => {
-    const [tasks, setTasks] = useState([])
-    const [input, setInput] = useState('')
+    const [students, setStudents] = useState([]);
 
-    const addTask = () => {
-        if (input.trim() !== '') {
-            setTasks([...tasks, input])
-            setInput('')
-        }
-    }
+    useEffect(() => {
+        const fetchStudents = async () => {
+            try {
+                const response = await fetch('http://localhost:5001/students');
+                if (response.ok) {
+                    const data = await response.json();
+                    setStudents(data);
+                } else {
+                    console.error('Failed to fetch students');
+                }
+            } catch (error) {
+                console.error('There was an error fetching the students:', error);
+            }
+        };
 
-    const removeTask = (index) => {
-        const newTasks = tasks.filter((_, idx) => idx !== index)
-        setTasks(newTasks)
-    }
+        fetchStudents();
+    }, []);
+
     return (
         <div className='flex flex-col mt-10'>
-            <h2 className='text-2xl mb-5'>To-Do List App</h2>
-            <div className='mb-5'>
-                <input
-                    type='text'
-                    placeholder='Add a task'
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)} // to be changed once state and funcationality is added 
-                    onKeyDown={(e) => { e.key === 'Enter' && addTask(); console.log(e.key) }} // to be changed once state and funcationality is added
-                    className='border-2 p-2 rounded mr-2'
-                />
-
-                <button className='bg-green-500 text-white px-4 py-2 hover:bg-green-600 rounded' onClick={addTask}>Add Task</button> {/* Add funcationality for addTask */}
-
-            </div>
+            <h2 className='text-3xl mb-5 font-bold'>Student List</h2>
             <ol>
-                {tasks.map((task, index) => (
-                    <li key={index} className='mb-2 flex'>
-                        <span className='flex-grow mr-2'>{task}</span>
-                        <button onClick={() => removeTask(index)} className='text-xs bg-red-500 text-white px-2 py-1 hover:bg-red-600 rounded'>Remove</button>
-
+                {students.map((student, index) => (
+                    <li key={index} className='mb-2 flex justify-between items-center'>
+                        <span>{student.firstName} {student.lastName} - Grade: {student.currentGrade}</span>
                     </li>
                 ))}
             </ol>
-
         </div>
-    )
+    );
 }
 
-export default StudentList
+export default StudentList;
