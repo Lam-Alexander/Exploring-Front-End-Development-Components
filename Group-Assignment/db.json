@@ -11,8 +11,29 @@
       "id": "84db",
       "firstName": "Alex",
       "lastName": "Lam",
-      "dateOfBirth": "1997-10-29",
+      "dateOfBirth": "2010-01-01",
       "currentGrade": "3.88"
+    },
+    {
+      "id": "8d17",
+      "firstName": "Grady",
+      "lastName": "Spurrill",
+      "dateOfBirth": "2015-01-01",
+      "currentGrade": "3.98"
+    },
+    {
+      "id": "0030",
+      "firstName": "Sanketh",
+      "lastName": "Mekala",
+      "dateOfBirth": "2017-12-29",
+      "currentGrade": "1.90"
+    },
+    {
+      "id": "0e22",
+      "firstName": "Jaden",
+      "lastName": "Whitman",
+      "dateOfBirth": "2019-04-18",
+      "currentGrade": "3.90"
     }
   ]
 }
