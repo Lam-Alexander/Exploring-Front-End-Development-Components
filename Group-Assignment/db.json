@@ -1,22 +1,18 @@
 {
   "users": [
     {
-      "id": "b574",
-      "firstName": "alex",
-      "lastName": "lam",
-      "phoneNumber": "4031234567",
-      "userName": "Alex123",
-      "email": "dsf@hotmail.com",
-      "password": "password"
+      "id": "e932",
+      "firstName": "Arianna",
+      "lastName": "Grande",
+      "dateOfBirth": "1993-06-26",
+      "currentGrade": "4.0"
     },
     {
-      "id": "04b9",
-      "firstName": "alex",
-      "lastName": "lam",
-      "phoneNumber": "4031234567",
-      "userName": "Alex123",
-      "email": "dsf@hotmail.com",
-      "password": "password"
+      "id": "84db",
+      "firstName": "Alex",
+      "lastName": "Lam",
+      "dateOfBirth": "1997-10-29",
+      "currentGrade": "3.88"
     }
   ]
 }
