@@ -7,7 +7,7 @@ const CombinedComponent = () => {
         firstName: '',
         lastName: '',
         dateOfBirth: '',
-        currentGrade: ''
+        CurrentGPA: ''
     });
     const [students, setStudents] = useState([]);
     const [message, setMessage] = useState('');
@@ -26,7 +26,7 @@ const CombinedComponent = () => {
                 firstName: capitalizeFirstLetter(formData.firstName),
                 lastName: capitalizeFirstLetter(formData.lastName),
                 dateOfBirth: formData.dateOfBirth,
-                currentGrade: formData.currentGrade
+                CurrentGPA: formData.CurrentGPA
             };
             const response = await fetch('http://localhost:5001/users', {
                 method: 'POST',
@@ -42,7 +42,7 @@ const CombinedComponent = () => {
                     firstName: '',
                     lastName: '',
                     dateOfBirth: '',
-                    currentGrade: ''
+                    CurrentGPA: ''
                 });
             } else {
                 setMessage('User registration failed');
@@ -67,10 +67,31 @@ const CombinedComponent = () => {
         });
     };
 
-    const removeStudent = (index) => {
-        const newStudents = students.filter((_, idx) => idx !== index);
-        setStudents(newStudents);
+    // const removeStudent = (index) => {
+    //     const newStudents = students.filter((_, idx) => idx !== index);
+    //     setStudents(newStudents);
+    // };
+
+    const removeStudent = async (index) => {
+        try {
+            const studentToRemove = students[index];
+            const response = await fetch(`http://localhost:5001/users/${studentToRemove.id}`, {
+                method: 'DELETE',
+            });
+    
+            if (response.ok) {
+                const newStudents = students.filter((_, idx) => idx !== index);
+                setStudents(newStudents);
+                setMessage('Student removed successfully');
+            } else {
+                setMessage('Failed to remove student');
+            }
+        } catch (error) {
+            console.error('Error removing student:', error);
+            setMessage('Failed to remove student');
+        }
     };
+    
 
     return (
         <div className='max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow'>
@@ -115,13 +136,13 @@ const CombinedComponent = () => {
                  </div>
 
                  <div className='mb-4'>
-                     <label htmlFor="currentGrade" className='block text-sm font-medium text-gray-600'>Current Grade</label>
+                     <label htmlFor="CurrentGPA" className='block text-sm font-medium text-gray-600'>Current GPA</label>
                     <input
-                         type="text"
-                         id="currentGrade"
-                         name="currentGrade"
+                         type="number"
+                         id="CurrentGPA"
+                         name="CurrentGPA"
                          className='mt-1 p-2 w-full border border-gray-300 rounded-md' required
-                         value={formData.currentGrade}
+                         value={formData.CurrentGPA}
                          onChange={handleInputChange}
                      />
                  </div>
@@ -152,7 +173,7 @@ const CombinedComponent = () => {
                             </div>
 
                             <div>
-                                <strong>Grade:</strong> {student.currentGrade}
+                                <strong>GPA:</strong> {student.CurrentGPA}
                             </div>
 
                             <button onClick={() => removeStudent(index)} className='text-xs bg-red-500 text-white px-2 py-1 hover:bg-red-600 rounded'>Remove</button>

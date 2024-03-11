@@ -5,35 +5,35 @@
       "firstName": "Arianna",
       "lastName": "Grande",
       "dateOfBirth": "1993-06-26",
-      "currentGrade": "4.0"
+      "CurrentGPA": "4.0"
     },
     {
-      "id": "84db",
-      "firstName": "Alex",
-      "lastName": "Lam",
-      "dateOfBirth": "2010-01-01",
-      "currentGrade": "3.88"
-    },
-    {
-      "id": "8d17",
+      "id": "ccf2",
       "firstName": "Grady",
       "lastName": "Spurrill",
-      "dateOfBirth": "2015-01-01",
-      "currentGrade": "3.98"
+      "dateOfBirth": "2015-07-25",
+      "CurrentGPA": "3.94"
     },
     {
-      "id": "0030",
+      "id": "aecd",
       "firstName": "Sanketh",
       "lastName": "Mekala",
-      "dateOfBirth": "2017-12-29",
-      "currentGrade": "1.90"
+      "dateOfBirth": "2017-04-19",
+      "CurrentGPA": "3.81"
     },
     {
-      "id": "0e22",
-      "firstName": "Jaden",
+      "id": "72f0",
+      "firstName": "Alex",
+      "lastName": "Lam",
+      "dateOfBirth": "2004-09-28",
+      "CurrentGPA": "3.88"
+    },
+    {
+      "id": "daef",
+      "firstName": "Jaiden",
       "lastName": "Whitman",
-      "dateOfBirth": "2019-04-18",
-      "currentGrade": "3.90"
+      "dateOfBirth": "2007-04-09",
+      "CurrentGPA": "3.85"
     }
   ]
 }

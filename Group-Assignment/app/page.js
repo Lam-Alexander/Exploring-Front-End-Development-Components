@@ -1,12 +1,23 @@
 import StudentForm from "./components/StudentForm";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-8">
-    <h1 className="text-4xl font-bold">Change to School name</h1>
-   <StudentForm/>
+    <main >
+      <div>
+        <Navbar/>
+      </div>
+
+    <div className="items-center p-8">
+        <StudentForm/>
+   </div>
+   <div>
+   <Footer/>
+   </div>
+ 
     </main>
   );
 }
