@@ -1,4 +1,3 @@
-// CombinedComponents.js
 "use client"
 import React, { useState, useEffect } from 'react';
 
@@ -66,11 +65,6 @@ const CombinedComponent = () => {
             [name]: value
         });
     };
-
-    // const removeStudent = (index) => {
-    //     const newStudents = students.filter((_, idx) => idx !== index);
-    //     setStudents(newStudents);
-    // };
 
     const removeStudent = async (index) => {
         try {
